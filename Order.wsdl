@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='utf-8'?>
+<wsdl:definitions
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:tns="efood.service.order"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:ns1="http://schemas.xmlsoap.org/soap/http"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:order_schema="efood.schema.order"
+	name="OrderService"
+	targetNamespace="efood.service.order">
+	<wsdl:types>
+		<xs:schema>
+			<xs:import schemaLocation="order.xsd" namespace="efood.schema.order"></xs:import>
+		<!--<xs:import schemaLocation="menu.xsd" namespace="efood.schema.admin"></xs:import>-->
+		<!--<xs:import schemaLocation="member.xsd" namespace="efood.schema.member"></xs:import>-->
+		</xs:schema>
+	</wsdl:types>
+	<wsdl:message name="getOrder">
+		<wsdl:part name="orderId" element="order_schema:orderId"></wsdl:part>
+		<wsdl:part name="orderQuantity" element="order_schema:orderQuantity"></wsdl:part>
+		<wsdl:part name="price" element="order_schema:price"></wsdl:part>
+		<wsdl:part name="orderList" element="order_schema:orderList"></wsdl:part>
+
+	</wsdl:message>
+	<wsdl:message name="getOrderIdentifier">
+		<wsdl:part name="Id" element="order_schema:orderId"></wsdl:part>
+	</wsdl:message>
+
+	<wsdl:message name="getMenuIdentifier">
+		<wsdl:part name="menu" element="order_schema:orderList"></wsdl:part>
+	</wsdl:message>
+
+
+	<wsdl:portType name="OrderPortType">
+		
+		<wsdl:operation name="OrderInformation">
+			<wsdl:input message="tns:getOrder" name="getOrder"></wsdl:input>
+			<wsdl:output message="tns:getOrderIdentifier" name="getOrderIdentifier"></wsdl:output>
+		</wsdl:operation>
+
+		
+		<wsdl:operation name="AddOrder">
+			<wsdl:input message="tns:getOrderIdentifier" name="getOrderIdentifier"></wsdl:input>
+		</wsdl:operation>
+
+
+		
+		<wsdl:operation name="DeleteOrder">
+			<wsdl:input message="tns:getOrderIdentifier" name="getOrderIdentifier"></wsdl:input>
+		</wsdl:operation>
+
+		
+		<wsdl:operation name="UpdateOrder">
+			<wsdl:input message="tns:getOrderIdentifier" name="getOrderIdentifier"></wsdl:input>
+		</wsdl:operation>
+
+		<wsdl:operation name="ViewOrder">
+			<wsdl:input message="tns:getMenuIdentifier" name="getMenuIdentifier"></wsdl:input>
+		</wsdl:operation>
+
+	</wsdl:portType>
+
+
+
+	<wsdl:binding name="OrderService" type="tns:OrderPortType">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="OrderInformation">
+			<soap:operation soapAction="" style="document"/>
+			<wsdl:input name="getOrder">
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="getOrderIdentifier">
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="AddOrder">
+			<soap:operation soapAction="" style="document"/>
+			<wsdl:input name="getOrderIdentifier">
+				<soap:body use="literal"/>
+			</wsdl:input>
+		</wsdl:operation>
+
+
+		<wsdl:operation name="DeleteOrder">
+			<soap:operation soapAction="" style="document"/>
+			<wsdl:input name="getOrderIdentifier">
+				<soap:body use="literal"/>
+			</wsdl:input>
+		</wsdl:operation>
+
+		<wsdl:operation name="UpdateOrder">
+			<soap:operation soapAction="" style="document"/>
+			<wsdl:input name="getOrderIdentifier">
+				<soap:body use="literal"/>
+			</wsdl:input>
+		</wsdl:operation>
+
+		<wsdl:operation name="ViewOrder">
+			<soap:operation soapAction="" style="document"/>
+			<wsdl:input name="getMenuIdentifier">
+				<soap:body use="literal"/>
+			</wsdl:input>
+		</wsdl:operation>
+
+	</wsdl:binding>
+
+	<wsdl:service name="Order">
+		<wsdl:port binding="tns:OrderService" name="OrderPortType">
+			<soap:address location="http://localhost:8080/show/"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

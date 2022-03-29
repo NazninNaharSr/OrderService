@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema 
+    targetNamespace="efood.schema.order"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    elementFormDefault="qualified" 
+    xmlns:client_ns="efood.schema.client">
+        <xs:element name="orderId" type="xs:int" nillable="false"></xs:element>
+        <xs:element name="orderQuantity" type="xs:int" nillable="false"></xs:element>
+        <xs:element name="price" type="xs:float" nillable="false"></xs:element>
+        <xs:element name="orderList" type="xs:string"></xs:element>
+        
+
+        
+</xs:schema>
